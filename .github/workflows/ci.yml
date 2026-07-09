@@ -10,5 +10,5 @@ jobs:
     job2:
         runs-on: ubuntu-slim
         steps:
-            - actions/checkout@v7
+            - uses: actions/checkout@v7
             - run: ls
