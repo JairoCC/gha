@@ -13,3 +13,22 @@ jobs:
         steps:
             - uses: actions/checkout@v7
             - run: ls
+    job3:
+        runs-on: ubuntu-slim
+        steps:
+            - uses: actions/checkout@v7
+            - run: ls
+
+    job4:
+        runs-on: ubuntu-slim
+        needs: job2
+        steps:
+            - uses: actions/checkout@v7
+            - run: ls
+
+    job5:
+        runs-on: ubuntu-slim
+        needs: [hello-world, job3]
+        steps:
+            - uses: actions/checkout@v7
+            - run: ls
