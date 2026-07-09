@@ -1,5 +1,8 @@
 on: 
     push:
+    pull_request:
+        branches:
+            - main
     
 jobs:
     hello-world:
@@ -9,13 +12,14 @@ jobs:
             - run: echo "Hello World!"
     job2:
         runs-on: ubuntu-slim
+        if: ${{ github.event_name == 'push' }}
         needs: hello-world
         steps:
             - uses: actions/checkout@v7
             - run: ls
     job3:
         runs-on: ubuntu-slim
-        if: false
+        if: ${{ github.event_name == 'pull_request' }}
         steps:
             - uses: actions/checkout@v7
             - run: ls
