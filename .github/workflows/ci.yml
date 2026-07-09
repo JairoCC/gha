@@ -9,6 +9,7 @@ jobs:
             - run: echo "Hello World!"
     job2:
         runs-on: ubuntu-slim
+        needs: hello-world
         steps:
             - uses: actions/checkout@v7
             - run: ls
